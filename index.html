@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+	<title>Stylizowanie formularzy</title>
+	<meta name="description" content="Nauka podstawowego stylizowania elementów formularzy" />
+	<meta name="keywords" content="css, odcinek" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<link rel="stylesheet" href="style.css" type="text/css" />	
+
+</head>
+
+<body>
+	<div id="container">
+		<h1>Formularz</h1>
+		<hr>
+		<form  onsubmit="return validation()" method="post" >			
+			<input type="text" id="imie" placeholder="Imię" onfocus="this.placeholder=''" onblur="this.placeholder='Imię'" >
+			<input type="text" id="nazwisko" placeholder="Nazwisko" onfocus="this.placeholder=''" onblur="this.placeholder='Nazwisko'" >
+			<input type="text" id="data-urodzenia" placeholder="Data urodzenia np. 2001-08-22" onfocus="this.placeholder=''" onblur="this.placeholder='Data urodzenia np. 2001-08-22'" >
+			<input type="text" id="pesel" placeholder="PESEL" onfocus="this.placeholder=''" onblur="this.placeholder='PESEL'" >			
+			<div id="pesel-error"></div>
+			<!-- <input type="password" placeholder="hasło" onfocus="this.placeholder=''" onblur="this.placeholder='hasło'" > -->
+			<fieldset>
+				<legend>Języki:</legend>
+				<div class="two-column">
+				<div class="single-col">
+					<div class="styled-input-container styled-input--square">
+					<div class="styled-input-single">
+						<input type="checkbox" name="fieldset-6" id="polski" />
+						<label for="polski">Polski</label>
+					</div>
+					<div class="styled-input-single">
+						<input type="checkbox" name="fieldset-6" id="angielski" />
+						<label for="angielski">Angielski</label>
+					</div>
+					<div class="styled-input-single">
+						<input type="checkbox" name="fieldset-6" id="niemiecki" />
+						<label for="niemiecki">Niemiecki</label>
+					</div>
+					</div>
+				</div>
+				<div class="single-col">
+					<div class="styled-input-container styled-input--square">
+					<div class="styled-input-single">
+						<input type="checkbox" name="fieldset-6" id="hiszpanski" />
+						<label for="hiszpanski">Hiszpański</label>
+					</div>
+					<div class="styled-input-single">
+						<input type="checkbox" name="fieldset-6" id="francuski" />
+						<label for="francuski">Francuski</label>
+					</div>
+					<div class="styled-input-single">
+						<input type="checkbox" name="fieldset-6" id="chinski" />
+						<label for="chinski">Chiński</label>
+					</div>
+					</div>
+				</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>Potrawy:</legend>
+				<div class="two-column">
+				<div class="single-col">
+					<div class="styled-input-container">
+					<div class="styled-input-single">
+						<input type="radio" name="fieldset-1" id="sushi" />
+						<label for="sushi">Sushi</label>
+					</div>
+					<div class="styled-input-single">
+						<input type="radio" name="fieldset-1" id="spaghetti" />
+						<label for="spaghetti">Spaghetti</label>
+					</div>
+					<div class="styled-input-single">
+						<input type="radio" name="fieldset-1" id="sajgonki" />
+						<label for="sajgonki">Sajgonki</label>
+					</div>
+					</div>
+					</div>	
+					<div class="single-col">
+						<div class="styled-input-container">
+						<div class="styled-input-single">
+							<input type="radio" name="fieldset-1" id="tortilla" />
+							<label for="tortilla">Tortilla</label>
+						</div>
+						<div class="styled-input-single">
+							<input type="radio" name="fieldset-1" id="frytki" />
+							<label for="frytki">Frytki</label>
+						</div>
+						<div class="styled-input-single">
+							<input type="radio" name="fieldset-1" id="krewetki" />
+							<label for="krewetki">Krewetki</label>
+						</div>
+						</div>
+					</div>	
+				</div>
+			</fieldset>
+			<div class="select">
+				<select name="slct" id="slct">
+					<option value="0">Wybierz kontynent</option>
+					<option value="1">Afryka</option>
+					<option value="2">Ameryka południowa</option>
+					<option value="3">Ameryka północna</option>
+					<option value="4">Antarktyda</option>
+					<option value="5">Australia</option>
+					<option value="6">Azja</option>
+					<option value="7">Europa</option>
+				</select>
+			</div>
+			<input type="submit" id="wyslij" value="Wyślij">			
+		</form>
+	</div>
+  	<script src="script.js"></script>
+</body>
+</html>
+
+
