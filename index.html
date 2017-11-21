@@ -15,12 +15,35 @@
 		<h1>Formularz</h1>
 		<hr>
 		<form  onsubmit="return validation()" method="post" >			
-			<input type="text" id="imie" placeholder="Imię" onfocus="this.placeholder=''" onblur="this.placeholder='Imię'" >
-			<input type="text" id="nazwisko" placeholder="Nazwisko" onfocus="this.placeholder=''" onblur="this.placeholder='Nazwisko'" >
+			<div class="required">*</div>
+			<input type="text" id="imie" placeholder="Imię" name="imie" onfocus="this.placeholder=''" onblur="this.placeholder='Imię'" >
+			<div class="required">*</div>
+			<input type="text" id="nazwisko" name="nazwisko" placeholder="Nazwisko" onfocus="this.placeholder=''" onblur="this.placeholder='Nazwisko'" >
 			<input type="text" id="data-urodzenia" placeholder="Data urodzenia np. 2001-08-22" onfocus="this.placeholder=''" onblur="this.placeholder='Data urodzenia np. 2001-08-22'" >
-			<input type="text" id="pesel" placeholder="PESEL" onfocus="this.placeholder=''" onblur="this.placeholder='PESEL'" >			
+			<div class="required">*</div>
+			<input type="text" id="pesel" placeholder="PESEL" name="pesel" onfocus="this.placeholder=''" onblur="this.placeholder='PESEL'" >			
 			<div id="pesel-error"></div>
 			<!-- <input type="password" placeholder="hasło" onfocus="this.placeholder=''" onblur="this.placeholder='hasło'" > -->
+			<fieldset>
+				
+					<legend>Płeć:</legend>
+			<div class="two-column">
+					<div class="single-col">
+					<div class="styled-input-single">
+						<input type="radio" name="sex" id="male" />
+						<label for="male">Mężczyzna</label>
+					</div>
+					</div>
+					<div class="single-col">
+					<div class="styled-input-single">
+						<input type="radio" name="sex" id="female" />
+						<label for="female">Kobieta</label>
+					</div>
+					</div>
+			</div>
+			</fieldset>	
+
+	
 			<fieldset>
 				<legend>Języki:</legend>
 				<div class="two-column">
@@ -95,7 +118,8 @@
 					</div>	
 				</div>
 			</fieldset>
-			<div class="select">
+			<div class="required" style="margin: -10px 0px 0px -208px;">*</div>
+			<div class="select">				
 				<select name="slct" id="slct">
 					<option value="0">Wybierz kontynent</option>
 					<option value="1">Afryka</option>

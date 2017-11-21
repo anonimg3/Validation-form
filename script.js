@@ -1,3 +1,5 @@
+// generate data from PESEL
+
 var button = document.getElementById("wyslij")
 var imie = document.getElementById("imie");
 var nazwisko = document.getElementById("nazwisko");
@@ -5,12 +7,45 @@ var pesel = document.getElementById("pesel");
 var dataUrodzenia = document.getElementById("data-urodzenia");
 var slct = document.getElementById("slct");
 var peselError = document.getElementById("pesel-error");
+var sex = document.getElementsByName("sex");
 
+document.getElementsByName("pesel")[0].addEventListener('change', peselValid);
+document.getElementsByName("imie")[0].addEventListener('change', imieValid);
+document.getElementsByName("nazwisko")[0].addEventListener('change', nazwiskoValid);
+
+function peselValid(){
+    if( this.value != "" && PeselDecode(this.value).valid == true){
+        dataUrodzenia.value = PeselDecode(this.value).date.toISOString().split('T')[0];
+        (PeselDecode(this.value).sex == "m") ? sex[0].checked = true : sex[1].checked = true; 
+        dataUrodzenia.style.borderColor = "#a5cda5";   
+        pesel.style.borderColor = "#a5cda5";   
+    }else{
+        dataUrodzenia.value = "";
+        sex[0].checked = false;
+        sex[1].checked = false;
+        pesel.style.borderColor = "red";
+    }
+}
+
+function imieValid(){
+    if( this.value != ""){
+        imie.style.borderColor = "#a5cda5";
+    }else{
+        imie.style.borderColor = "red";
+    }
+}
+
+function nazwiskoValid(){
+    if( this.value != ""){
+        nazwisko.style.borderColor = "#a5cda5";
+    }else{
+        nazwisko.style.borderColor = "red";
+    }
+}
 
 function validation(){  
     
     var error = false;
-
     peselError.innerText = "";
 
     if( imie.value == "" ){
@@ -52,33 +87,15 @@ function validation(){
         }
     }
 
-    if( dataUrodzenia.value == "" ){
-        dataUrodzenia.placeholder = "Podaj datę urodzenia";
-        dataUrodzenia.style.borderColor = "red";
-        error = true;
-    }else{
-        dataUrodzenia.style.borderColor = "#a5cda5"; 
-    }
-
-    if( pesel.value != ""  && dataUrodzenia.value != "" ){
-        if ( PeselDecode(pesel.value).valid == true && isValidDate(dataUrodzenia.value)){
-            if( dataUrodzenia.value != PeselDecode(pesel.value).date.toISOString().split('T')[0] ){
-                peselError.innerText = "PESEL nie jest zgodny z datą urodzenia";
-                dataUrodzenia.style.borderColor = "red";
-                error = true;
-            }else{
-                dataUrodzenia.style.borderColor = "#a5cda5";
-                peselError.innerText = "";
-                pesel.style.borderColor = "#a5cda5"; 
-            }
-        }        
-    }
     
     if( dataUrodzenia.value != "" && !isValidDate(dataUrodzenia.value) ){
         peselError.innerText = "Błędny format daty. Datę podaj w postaci YYYY-MM-DD np. 2001-08-22";
         dataUrodzenia.style.borderColor = "red";
         error = true;
+    }else{
+        dataUrodzenia.style.borderColor = "#a5cda5";        
     }
+
 
     return !error;    
 }
